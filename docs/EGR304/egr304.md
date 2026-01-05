@@ -4,3 +4,23 @@ tags:
 - tag1
 - tag2
 ---
+
+## Overview
+
+<!-- Insert information about the goals of the project and what the project is. -->
+
+## Visuals
+
+<!-- Insert Pictures of the project -->
+
+## Contribution
+
+<!-- Talk about what parts I did for the project -->
+
+## Technical Details
+
+<!-- Insert any technical information that would be desired -->
+
+## Results
+
+<!-- Did we meet project reqs, did we achieve initially goals? -->
