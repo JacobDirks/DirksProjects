@@ -419,15 +419,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#visuals" class="md-nav__link">
-    <span class="md-ellipsis">
-      Visuals
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#contribution" class="md-nav__link">
     <span class="md-ellipsis">
       Contribution
@@ -625,15 +616,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#visuals" class="md-nav__link">
-    <span class="md-ellipsis">
-      Visuals
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#contribution" class="md-nav__link">
     <span class="md-ellipsis">
       Contribution
@@ -676,16 +658,67 @@
 
   <h1>Automatic Boom Leveling</h1>
 
-<p>**This tab is currently pending help from a team member of the project who has the code.</p>
 <h2 id="overview">Overview</h2>
 <!-- Insert information about the goals of the project and what the project is. -->
 <p>Take a need from the agricultural community, in specific regarding the growth or maintenance of crops, and for our group we chose an automatic boom leveling device. Since this is a school project it is important to note that I received permission to use this assignment here. One other piece of information that is important, this project was meant strictly to create a functional prototype and complete an elevator pitch.</p>
-<h2 id="visuals">Visuals</h2>
+<!--
+## Visuals
+
 <!-- Insert Pictures of the project -->
 
 <h2 id="contribution">Contribution</h2>
 <!-- Talk about what parts I did for the project -->
 <p>Within the team's composition I was in charge of working directly with the project head to ensure we stayed on top of deadlines and I was in charge of the code base. This involved leading the development of the code and researching how various sensors sent signals back to the controller and how to use those signals.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;Servo.h&gt;</span>
+<span class="nf">Servo</span><span class="w"> </span><span class="n">boomHeight</span><span class="p">;</span><span class="w"> </span><span class="c1">// create servo object to control boom height</span>
+
+<span class="kr">int</span><span class="w"> </span><span class="n">pos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="c1">// variable for bottom of boom height</span>
+<span class="kr">int</span><span class="w"> </span><span class="n">buttPin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">7</span><span class="p">;</span>
+<span class="kr">double</span><span class="w"> </span><span class="n">goodLow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"> </span><span class="c1">// low end of acceptable boom height</span>
+<span class="kr">double</span><span class="w"> </span><span class="n">goodHigh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">2.90</span><span class="p">;</span><span class="w"> </span><span class="c1">// high end of accpetable boom height</span>
+<span class="kr">void</span><span class="w"> </span><span class="nb">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// put your setup code here, to run once:</span>
+<span class="nf">Serial</span><span class="p">.</span><span class="nf">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span>
+<span class="n">boomHeight</span><span class="p">.</span><span class="nf">attach</span><span class="p">(</span><span class="mi">9</span><span class="p">);</span><span class="w"> </span><span class="c1">//attach servo to pin 9</span>
+<span class="n">boomHeight</span><span class="p">.</span><span class="nf">write</span><span class="p">(</span><span class="n">pos</span><span class="p">);</span><span class="w"> </span><span class="c1">// moves boom heigh to 0</span>
+
+<span class="p">}</span><span class="w"> </span>
+
+<span class="kr">void</span><span class="w"> </span><span class="nb">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// put your main code here, to run repeatedly:</span>
+<span class="w">  </span><span class="kr">int</span><span class="w"> </span><span class="n">sensorValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">analogRead</span><span class="p">(</span><span class="n">A1</span><span class="p">);</span><span class="w"> </span><span class="c1">// gets value from IR sensors</span>
+<span class="w">  </span><span class="kr">float</span><span class="w"> </span><span class="n">voltage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sensorValue</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="mf">5.0</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">1023.0</span><span class="p">);</span><span class="w"> </span><span class="c1">// measures the voltage</span>
+<span class="w"> </span><span class="c1">// Serial.println(voltage);</span>
+<span class="k">if</span><span class="p">((</span><span class="n">goodHigh</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">voltage</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="p">(</span><span class="w"> </span><span class="n">goodLow</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">voltage</span><span class="p">)){</span><span class="nf">Serial</span><span class="p">.</span><span class="nf">println</span><span class="p">(</span><span class="n">voltage</span><span class="p">);}</span>
+<span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="p">(</span><span class="n">goodLow</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">voltage</span><span class="p">){</span><span class="w"> </span><span class="c1">// alters position as long as this is true</span>
+
+<span class="w">    </span><span class="k">if</span><span class="p">((</span><span class="n">pos</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="o">&amp;&amp;</span><span class="p">(</span><span class="n">pos</span><span class="o">&lt;</span><span class="mi">180</span><span class="p">)){</span>
+<span class="w">      </span><span class="n">boomHeight</span><span class="p">.</span><span class="nf">write</span><span class="p">(</span><span class="n">pos</span><span class="p">);</span><span class="w"> </span><span class="c1">// starts raising</span>
+<span class="w">      </span><span class="nf">delay</span><span class="p">(</span><span class="mi">30</span><span class="p">);</span><span class="w"> </span><span class="c1">// gives it a second to move</span>
+<span class="w">      </span><span class="n">pos</span><span class="o">=</span><span class="n">pos</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">  </span><span class="kr">int</span><span class="w"> </span><span class="n">sensorValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">analogRead</span><span class="p">(</span><span class="n">A1</span><span class="p">);</span><span class="w"> </span><span class="c1">// gets value from IR sensors</span>
+<span class="w">  </span><span class="kr">float</span><span class="w"> </span><span class="n">voltage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sensorValue</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="mf">5.0</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">1023.0</span><span class="p">);</span><span class="w"> </span><span class="c1">// measures the voltage</span>
+<span class="w">  </span><span class="nf">Serial</span><span class="p">.</span><span class="nf">println</span><span class="p">(</span><span class="n">voltage</span><span class="p">);</span>
+<span class="w">  </span><span class="nf">Serial</span><span class="p">.</span><span class="nf">print</span><span class="p">(</span><span class="s">"loop 1: "</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="k">if</span><span class="p">(</span><span class="n">voltage</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">goodHigh</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// alters position as long as it is taller based on voltage return</span>
+
+<span class="w">    </span><span class="k">if</span><span class="p">((</span><span class="n">pos</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">180</span><span class="p">)</span><span class="o">&amp;&amp;</span><span class="p">(</span><span class="n">pos</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)){</span>
+<span class="w">      </span><span class="n">boomHeight</span><span class="p">.</span><span class="nf">write</span><span class="p">(</span><span class="n">pos</span><span class="p">);</span><span class="w"> </span><span class="c1">// starts lowering</span>
+<span class="w">      </span><span class="nf">delay</span><span class="p">(</span><span class="mi">30</span><span class="p">);</span><span class="w"> </span><span class="c1">//gives it a second to move</span>
+<span class="w">      </span><span class="n">pos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pos</span><span class="mi">-1</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="kr">int</span><span class="w"> </span><span class="n">sensorValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">analogRead</span><span class="p">(</span><span class="n">A1</span><span class="p">);</span><span class="w"> </span><span class="c1">// gets value from IR sensors</span>
+<span class="w">  </span><span class="kr">float</span><span class="w"> </span><span class="n">voltage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sensorValue</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="mf">5.0</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">1023.0</span><span class="p">);</span><span class="w"> </span><span class="c1">// measures the voltage</span>
+<span class="w">  </span><span class="nf">Serial</span><span class="p">.</span><span class="nf">print</span><span class="p">(</span><span class="s">"loop 2: "</span><span class="p">);</span>
+<span class="w">  </span><span class="nf">Serial</span><span class="p">.</span><span class="nf">println</span><span class="p">(</span><span class="n">voltage</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 <!--
 ## Technical Details
 
