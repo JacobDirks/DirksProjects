@@ -11,9 +11,9 @@ tags:
 
 Welcome to the project portfolio for Jacob Dirks. Projects will descend in order from most recent to previous projects.
 
-* ["Mechanical Clock (In Progress)"]()
-* ["EGR 304 Irrigation System"]()
-* ["EGR 102 Automatic Boom Leveling"]()
+* ["Mechanical Clock (In Progress)"](https://jacobdirks.github.io/DirksProjects/MechClock/mechanicalClock/)
+* ["EGR 304 Irrigation System"](https://jacobdirks.github.io/DirksProjects/EGR304/egr304/)
+<!-- * ["EGR 102 Automatic Boom Leveling"]() -->
 * ["Useless Box"](https://jacobdirks.github.io/DirksProjects/UselessBox/uselessBox/)
 
 <!-- Projects to get approval moving forward: EVIT - Engineering 8x as part of examples. EVIT- Welding final project, EGR 101 - Light project-->

@@ -45,7 +45,7 @@ As for files to print these parts look no further than this [zip folder](ClockPr
 
 Code Base:
 
-```Arduino { style="--md-codeblock-height: 100px;" }
+```Arduino
 
 #include <Wire.h>
 #include <Keypad.h>
