@@ -9,7 +9,7 @@ tags:
 <font size= "8">Jacob Dirks Portfolio</font><br>
 </center>
 
-Welcome to the project portfolio for Jacob Dirks. Projects will descend in order from most recent to previous projects. <!-- As for who I am? Well I'm a dual engineering student that has a love for all kinds of games. From computer games to soccer, which I referee as a way to give back to a game that I've played since childhood. I love all of the unique challenges which come from each new project and look forward to all the new challenges I have yet to find. -->
+Welcome to the project portfolio for Jacob Dirks. Projects will descend in order from most recent to previous projects. As for who I am? Well I'm a dual engineering student who has a love for all kinds of games. From computer games to soccer. I give back to the games I've played since childhood, as a soccer official for all ages from youth to semi professional amateur adult. I love the unique challenges which come from new projects and look forward to all the new challenges I have yet to find.
 
 * ["Mechanical Clock (In Progress)"](https://jacobdirks.github.io/DirksProjects/MechClock/mechanicalClock/)
 * ["EGR 304 Irrigation System"](https://jacobdirks.github.io/DirksProjects/EGR304/egr304/)
