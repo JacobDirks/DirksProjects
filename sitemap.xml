@@ -2,27 +2,22 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://jacobdirks.github.io/DirksProjects/</loc>
-         <lastmod>2026-01-08</lastmod>
+         <lastmod>2026-01-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://jacobdirks.github.io/DirksProjects/egr102/</loc>
-         <lastmod>2026-01-08</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://jacobdirks.github.io/DirksProjects/EGR304/egr304/</loc>
-         <lastmod>2026-01-08</lastmod>
+         <lastmod>2026-01-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://jacobdirks.github.io/DirksProjects/MechClock/mechanicalClock/</loc>
-         <lastmod>2026-01-08</lastmod>
+         <lastmod>2026-01-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://jacobdirks.github.io/DirksProjects/UselessBox/uselessBox/</loc>
-         <lastmod>2026-01-08</lastmod>
+         <lastmod>2026-01-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>

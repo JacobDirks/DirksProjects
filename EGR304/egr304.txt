@@ -1,0 +1,23 @@
+---
+title: Irrigation Project
+tags:
+- tag1
+- tag2
+---
+
+## Overview
+
+<!-- Insert information about the goals of the project and what the project is. -->
+The goal of this project was to find a need within the house that an everyday individual would find helpful if they didn't have to worry about it while working with a new team of individuals. Since this was a school based project the background idea as communicated by my professors was actually to mimic a little bit of the professional environment.
+
+In order to keep things brief the links to the project's website are [Team website](https://egr304-2025-f-102.github.io/) and [Individual website.](https://jacobdirks.github.io/) They are linked together but unfortunately I am not able to link them back to this one as it was submitted for a school assignment but I do have permission to share.
+
+## Contribution
+
+<!-- Talk about what parts I did for the project -->
+Aside from the individual section which each team member was responsible for their own I also helped the team stay on track with our various assignments by measuring criteria against our rubrics and timelines. This included looking ahead to future assignments and reaching out to find vendors for parts at various points in the development cycle. Since I was also the only one with prior coding knowledge I took lead when it came to our communication protocol (binary signals) and general code based needs while aiming to support the development of my peers coding skills in C with an emphasis on embedded systems.
+
+## Results
+
+<!-- Did we meet project reqs, did we achieve initially goals? -->
+Overall our team met the project requirements mentioned in the team website but did lose some points on our websites ability to communicate information effectively.
