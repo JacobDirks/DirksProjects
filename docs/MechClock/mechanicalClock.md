@@ -13,7 +13,10 @@ Create a several segment clock to learn communication protocols, print statement
 ## Visuals
 
 <!-- Insert Pictures of the project -->
-Are not yet ready as the project is in the barest of implementation stages.
+These pictures are from the development stage of the project.
+![24 face](images/29_segment.png){width=400px}
+![38 face](images/38_segment.png){width=400px}
+![59 face](images/59_segment.png){width=400px}
 
 ## Contribution
 
@@ -23,7 +26,7 @@ I briefly saw an image of a similar project and wanted to attempt to create ever
 ## Technical Details
 
 <!-- Insert any technical information that would be desired -->
-The current parts for the template are as follows:
+The parts for the template are as follows:
 
 * Clock segment or a servo mount
   * ![Clock segment image](images/clockSegmentDrawing.png)
@@ -34,7 +37,7 @@ The current parts for the template are as follows:
 * Center links
   * ![Clock link image](images/clockLinkDrawing.png)
 
-As for files to print these parts look no further than this [zip folder](ClockProject.zip)
+As for files to print these parts and the final parts look no further than this [zip folder](ClockProject.zip)
 
 | Item Name | Quantity | Price |
 | :------------------ | :------------- | :------ |
@@ -55,14 +58,6 @@ Made by Jacob Dirks
 Dedicated hours spent: 7
 Half-focused hours: 22 - I like watching movies and playing games while on summer break
 Built for: Personal Project
-*/
-
-/*
-TODO List: 
-Figure out if we're adding light sources. Are those on a switch? - feature for an updated version
-Check power draw
-Finally make edits for a finalized design per digit, Clean up wiring in that design, clean up code, and get mounting
-
 */
 
 /*
@@ -1014,7 +1009,19 @@ void moveNumDown(int servoNum){
 
 ```
 
+### Points of Concern
+
+1. The clock drifts after a period of operation. This is caused by the length of time it takes to move each digit and can be calculated for or solved by using a clock module instead of running it through the update section.
+2. The 5V line from the Arduino module and an extra amp are not enough to move each digit when all the motors are attached. A secondary power supply would be needed in order to ensure movement works long term.
+
 ## Results
 
 <!-- Did we meet project reqs, did we achieve initially goals? -->
-This project is currently not complete so we have not achieved all of the goals of the project.
+I was able to successfully build and test the mechanical clock project thorough the demonstration mode. I didn't build the final segment as that was outside the scope I wanted to focus on for this project. However I did learn I2C communication, worked extensively with print statement debugging and wire management while in the development cycles. Through my classes I mentioned earlier in the Contribution section I learned SPI and UART communication protocols.
+
+Future Improvements:
+
+* Ensure final configuration successfully joins the working elements on of the box.
+* Research and access the datasheet to correctly calculate the amount of amperage required for all of the motors.
+* Add in the ports for easy access to microcontroller.
+* Apply a fix for the clock drift.
