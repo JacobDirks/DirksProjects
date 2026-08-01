@@ -216,6 +216,35 @@
   
     
     
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Archived_Projects/EGR304/egr304/" class="md-tabs__link">
+          
+  
+    
+  
+  Archived Projects
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
       <li class="md-tabs__item">
         <a href="../../EGR102/egr102/" class="md-tabs__link">
           
@@ -369,6 +398,57 @@
         
   
   
+    
+  
+  
+    <a href="../../Archived_Projects/EGR304/egr304/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Archived Projects
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
     <a href="../../EGR102/egr102/" class="md-nav__link">
       
   
@@ -462,10 +542,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked="">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked="">
         
           
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
             
   
   <span class="md-ellipsis">
@@ -476,8 +556,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_4">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             UselessBox
           </label>
@@ -556,6 +636,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Technical Details">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#code-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Examples
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -631,6 +726,21 @@
       Technical Details
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Technical Details">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#code-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Examples
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -718,48 +828,9 @@ All length units are in millimeters and angle units are in degrees.</p>
 </tr>
 </tbody>
 </table>
-<p>Code Base:</p>
-<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;Servo.h&gt;</span>
-<span class="nf">Servo</span><span class="w"> </span><span class="n">ctrlArm</span><span class="p">;</span><span class="w"> </span><span class="c1">// create servo object to control a servo</span>
-
-<span class="c1">// Hours spent refactoring: .75 </span>
-<span class="c1">// Version 1.1</span>
-<span class="c1">// Created by Jacob Dirks</span>
-
-<span class="c1">// two of twelve ' board limit' reached'</span>
-
-<span class="kr">int</span><span class="w"> </span><span class="n">pos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="c1">// variable to control ctrl arm position</span>
-<span class="kr">int</span><span class="w"> </span><span class="n">altCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="kr">int</span><span class="w"> </span><span class="n">shortHeight</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">150</span><span class="p">;</span><span class="w"> </span><span class="c1">// What is this</span>
-<span class="kr">int</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="c1">// this is what we'll use for the random case generator. Makes it easier to store number</span>
-<span class="kr">int</span><span class="w"> </span><span class="n">caseCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w"> </span><span class="c1">// easier to update later</span>
-<span class="kr">int</span><span class="w"> </span><span class="n">runCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="kr">int</span><span class="w"> </span><span class="n">moveBox</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"> </span><span class="c1">// stores number 3 for pin 3</span>
-<span class="kr">int</span><span class="w"> </span><span class="n">TState</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="c1">//variable for storing switch status</span>
-<span class="kr">int</span><span class="w"> </span><span class="n">TStatePrior</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TState</span><span class="p">;</span><span class="w"> </span><span class="c1">// stores previous state</span>
-
-<span class="kr">void</span><span class="w"> </span><span class="nb">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="c1">// put your setup code here, to run once:</span>
-<span class="w">  </span><span class="n">ctrlArm</span><span class="p">.</span><span class="nf">attach</span><span class="p">(</span><span class="mi">13</span><span class="p">);</span>
-<span class="w">  </span><span class="nf">pinMode</span><span class="p">(</span><span class="n">moveBox</span><span class="p">,</span><span class="w"> </span><span class="kr">INPUT_PULLUP</span><span class="p">);</span><span class="w"> </span><span class="c1">// sets it as a special kind of input which is how the lever requires it</span>
-
-<span class="w">  </span><span class="n">ctrlArm</span><span class="p">.</span><span class="nf">write</span><span class="p">(</span><span class="n">pos</span><span class="p">);</span><span class="w"> </span><span class="c1">// gives it the first desire to go there</span>
-<span class="w">  </span><span class="nf">delay</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
-<span class="w">  </span><span class="n">ctrlArm</span><span class="p">.</span><span class="nf">write</span><span class="p">(</span><span class="n">pos</span><span class="p">);</span><span class="w"> </span><span class="c1">// allows the time to get there or is this what causes the initial open and close</span>
-<span class="w">  </span><span class="nf">delay</span><span class="p">(</span><span class="mi">50</span><span class="p">);</span>
-
-<span class="p">}</span>
-
-<span class="kr">void</span><span class="w"> </span><span class="nb">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-
-<span class="c1">// section to open and move the box</span>
-<span class="n">TState</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">digitalRead</span><span class="p">(</span><span class="n">moveBox</span><span class="p">);</span><span class="w"> </span><span class="c1">// reads state of switch</span>
-
-<span class="k">if</span><span class="p">((</span><span class="n">TState</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">TStatePrior</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// changes the arm to replace it</span>
-<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">pos</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">170</span><span class="p">){</span>
-<span class="w">      </span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">((</span><span class="kr">int</span><span class="p">)</span><span class="nf">random</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="o">*</span><span class="n">caseCount</span><span class="p">)</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">caseCount</span><span class="p">);</span>
-
-<span class="w">      </span><span class="k">switch</span><span class="p">(</span><span class="n">count</span><span class="p">){</span>
+<h3 id="code-examples">Code Examples</h3>
+<p>Example of two of the responses.</p>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="k">switch</span><span class="p">(</span><span class="n">count</span><span class="p">){</span>
 <span class="w">          </span><span class="k">case</span><span class="w"> </span><span class="mi">0</span><span class="p">:</span><span class="w"> </span><span class="c1">// fast bounces cause angry</span>
 
 <span class="w">              </span><span class="k">for</span><span class="p">(</span><span class="n">runCount</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">runCount</span><span class="o">&lt;=</span><span class="mi">7</span><span class="p">;</span><span class="w"> </span><span class="n">runCount</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span><span class="p">){</span>
@@ -780,10 +851,6 @@ All length units are in millimeters and angle units are in degrees.</p>
 
 <span class="w">              </span><span class="n">closeLidSpeed</span><span class="p">(</span><span class="mi">15</span><span class="p">);</span>
 <span class="w">              </span><span class="k">break</span><span class="p">;</span>
-<span class="w">          </span><span class="k">case</span><span class="w"> </span><span class="mi">2</span><span class="p">:</span><span class="w"> </span><span class="c1">// just close the lid</span>
-<span class="w">            </span><span class="n">closeLidSpeed</span><span class="p">(</span><span class="mi">15</span><span class="p">);</span>
-<span class="w">            </span><span class="nf">delay</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
-<span class="w">            </span><span class="k">break</span><span class="p">;</span>
 
 <span class="w">          </span><span class="k">case</span><span class="w"> </span><span class="mi">3</span><span class="p">:</span><span class="cm">/* a slow and then come back only to go out and hold it down again */</span>
 
@@ -792,64 +859,10 @@ All length units are in millimeters and angle units are in degrees.</p>
 <span class="w">            </span><span class="n">closeLidSpeed</span><span class="p">(</span><span class="mi">25</span><span class="p">);</span>
 <span class="w">            </span><span class="nf">delay</span><span class="p">(</span><span class="mi">180</span><span class="p">);</span>
 <span class="w">            </span><span class="k">break</span><span class="p">;</span>
-
-<span class="w">          </span><span class="k">case</span><span class="w"> </span><span class="mi">4</span><span class="p">:</span><span class="w"> </span><span class="c1">// slow but up down a few times</span>
-<span class="w">            </span><span class="n">closeLidSpeed</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
-
-<span class="w">            </span><span class="k">for</span><span class="p">(</span><span class="n">runCount</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">runCount</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"> </span><span class="n">runCount</span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span><span class="p">){</span>
-
-<span class="w">              </span><span class="k">for</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="mi">20</span><span class="p">;</span><span class="w"> </span><span class="n">pos</span><span class="o">&lt;=</span><span class="mi">80</span><span class="p">;</span><span class="w"> </span><span class="n">pos</span><span class="o">+=</span><span class="w"> </span><span class="mi">2</span><span class="p">){</span>
-
-<span class="w">                </span><span class="n">ctrlArm</span><span class="p">.</span><span class="nf">write</span><span class="p">(</span><span class="n">pos</span><span class="p">);</span>
-<span class="w">                </span><span class="nf">delay</span><span class="p">(</span><span class="mi">15</span><span class="p">);</span>
-
-<span class="w">              </span><span class="p">}</span>
-
-<span class="w">              </span><span class="k">for</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="mi">80</span><span class="p">;</span><span class="w"> </span><span class="n">pos</span><span class="w"> </span><span class="o">&gt;=</span><span class="mi">20</span><span class="p">;</span><span class="w"> </span><span class="n">pos</span><span class="o">-=</span><span class="w"> </span><span class="mi">2</span><span class="p">){</span>
-
-<span class="w">                </span><span class="n">ctrlArm</span><span class="p">.</span><span class="nf">write</span><span class="p">(</span><span class="n">pos</span><span class="p">);</span>
-<span class="w">                </span><span class="nf">delay</span><span class="p">(</span><span class="mi">15</span><span class="p">);</span>
-
-<span class="w">              </span><span class="p">}</span>
-
-<span class="w">            </span><span class="p">}</span>
-
-<span class="w">            </span><span class="n">closeLidSpeed</span><span class="p">(</span><span class="mi">15</span><span class="p">);</span>
-
-<span class="w">          </span><span class="k">default</span><span class="o">:</span>
-
-<span class="w">           </span><span class="n">closeLidSpeed</span><span class="p">(</span><span class="mi">30</span><span class="p">);</span>
-<span class="w">            </span><span class="k">break</span><span class="p">;</span>
-<span class="w">        </span><span class="p">}</span>
 <span class="w">      </span><span class="p">}</span>
-
-<span class="w">        </span><span class="c1">//here is the common code</span>
-
-<span class="w">      </span><span class="n">TStatePrior</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TState</span><span class="p">;</span><span class="w"> </span><span class="c1">// stores previous Tstate</span>
-<span class="w">      </span><span class="n">TState</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">digitalRead</span><span class="p">(</span><span class="n">moveBox</span><span class="p">);</span><span class="w"> </span><span class="c1">// updates TState</span>
-<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="c1">//end if of tstate = 1 and prior = 0</span>
-<span class="nf">delay</span><span class="p">(</span><span class="mi">250</span><span class="p">);</span>
-<span class="w">  </span><span class="k">if</span><span class="p">((</span><span class="n">TState</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">TStatePrior</span><span class="w"> </span><span class="o">==</span><span class="mi">1</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
-
-<span class="w">  </span><span class="k">if</span><span class="p">(</span><span class="n">pos</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">20</span><span class="p">){</span><span class="w"> </span><span class="c1">// if not at home then return there</span>
-<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">pos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">170</span><span class="p">;</span><span class="w"> </span><span class="n">pos</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">20</span><span class="p">;</span><span class="w"> </span><span class="n">pos</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// goes from 170 degrees to 20 degrees </span>
-
-<span class="w">    </span><span class="n">ctrlArm</span><span class="p">.</span><span class="nf">write</span><span class="p">(</span><span class="n">pos</span><span class="p">);</span><span class="w"> </span><span class="c1">// tell servo to go to position in variable 'pos'</span>
-<span class="w">    </span><span class="nf">delay</span><span class="p">(</span><span class="mi">15</span><span class="p">);</span><span class="w"> </span><span class="c1">// waits 15ms for the servo to reach the position</span>
-
-<span class="w">  </span><span class="p">}</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="w">  </span><span class="n">TState</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">digitalRead</span><span class="p">(</span><span class="n">moveBox</span><span class="p">);</span>
-<span class="n">TStatePrior</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-
-<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nf">delay</span><span class="p">(</span><span class="mi">250</span><span class="p">);</span>
-<span class="w">  </span><span class="n">TState</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">digitalRead</span><span class="p">(</span><span class="n">moveBox</span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="p">}</span><span class="w"> </span>
-
-<span class="kr">void</span><span class="w"> </span><span class="nf">closeLidSpeed</span><span class="p">(</span><span class="kr">int</span><span class="w"> </span><span class="n">speed</span><span class="p">){</span><span class="w"> </span><span class="c1">// a method to simply flip the switch back with a delay choice</span>
+</code></pre></div>
+<p>A key feature when regarding the speed and "emotions" of the box.</p>
+<div class="highlight"><pre><span></span><code><span class="kr">void</span><span class="w"> </span><span class="nf">closeLidSpeed</span><span class="p">(</span><span class="kr">int</span><span class="w"> </span><span class="n">speed</span><span class="p">){</span><span class="w"> </span><span class="c1">// a method to simply flip the switch back with a delay choice</span>
 <span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">pos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">20</span><span class="p">;</span><span class="w"> </span><span class="n">pos</span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">170</span><span class="p">;</span><span class="w"> </span><span class="n">pos</span><span class="o">+=</span><span class="mi">10</span><span class="p">){</span>
 <span class="w">    </span><span class="n">ctrlArm</span><span class="p">.</span><span class="nf">write</span><span class="p">(</span><span class="n">pos</span><span class="p">);</span>
 <span class="w">    </span><span class="nf">delay</span><span class="p">(</span><span class="n">speed</span><span class="p">);</span><span class="w"> </span><span class="c1">// wait 15 ms and then move it</span>
@@ -858,6 +871,7 @@ All length units are in millimeters and angle units are in degrees.</p>
 <span class="w">  </span><span class="n">pos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">170</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
+<p>The rest of the code is available in <a href="../project_files/UselessBoxRefactoring.ino">this arduino file.</a></p>
 <h2 id="results">Results</h2>
 <!-- Did we meet project reqs, did we achieve initially goals? -->
 <p>I was able to successfully build, test, and improve the useless box. Although there were several complications along the way regarding CAD software, signal reading, and physical manipulations.</p>

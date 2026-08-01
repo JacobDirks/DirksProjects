@@ -218,6 +218,35 @@
   
     
     
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Archived_Projects/EGR304/egr304/" class="md-tabs__link">
+          
+  
+    
+  
+  Archived Projects
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
       <li class="md-tabs__item">
         <a href="../../EGR102/egr102/" class="md-tabs__link">
           
@@ -371,6 +400,57 @@
         
   
   
+    
+  
+  
+    <a href="../../Archived_Projects/EGR304/egr304/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Archived Projects
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
     <a href="../../EGR102/egr102/" class="md-nav__link">
       
   
@@ -418,10 +498,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked="">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked="">
         
           
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
             
   
   <span class="md-ellipsis">
@@ -432,8 +512,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_3">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             MechClock
           </label>
@@ -523,6 +603,15 @@
   
     <nav class="md-nav" aria-label="Technical Details">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#code-base-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Base Examples
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#points-of-concern" class="md-nav__link">
@@ -671,6 +760,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#code-base-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Base Examples
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#points-of-concern" class="md-nav__link">
     <span class="md-ellipsis">
       Points of Concern
@@ -775,18 +873,9 @@
 </tr>
 </tbody>
 </table>
-<p>Code Base:</p>
-<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;Wire.h&gt;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;Keypad.h&gt;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;Adafruit_PWMServoDriver.h&gt;</span>
-<span class="cm">/*</span>
-<span class="cm">Made by Jacob Dirks</span>
-<span class="cm">Dedicated hours spent: 7</span>
-<span class="cm">Half-focused hours: 22 - I like watching movies and playing games while on summer break</span>
-<span class="cm">Built for: Personal Project</span>
-<span class="cm">*/</span>
-
-<span class="cm">/*</span>
+<h3 id="code-base-examples">Code Base Examples</h3>
+<p>Diagram for joint to servo number:</p>
+<div class="highlight"><pre><span></span><code><span class="cm">/*</span>
 
 <span class="cm"> DIAGRAM</span>
 <span class="cm">   -         20             13          6</span>
@@ -798,88 +887,12 @@
 
 
 <span class="cm">*/</span>
-
-<span class="c1">//section for button sensor it goes from pins 9 to pin 2-3 depending on if you want to connect the last row or not. Since the code doesn't use A-D my model doesn't have it connected</span>
-<span class="kr">const</span><span class="w"> </span><span class="kr">byte</span><span class="w"> </span><span class="n">ROWS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
-<span class="kr">const</span><span class="w"> </span><span class="kr">byte</span><span class="w"> </span><span class="n">COLS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span><span class="w"> </span><span class="c1">// if there are 3 columns update this</span>
-<span class="kr">char</span><span class="w"> </span><span class="n">hexaKeys</span><span class="p">[</span><span class="n">ROWS</span><span class="p">][</span><span class="n">COLS</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// ABCD are later ignored so we could use a 3x4 instead of a 4x4</span>
-<span class="w">  </span><span class="p">{</span><span class="sc">'1'</span><span class="p">,</span><span class="w"> </span><span class="sc">'2'</span><span class="p">,</span><span class="w"> </span><span class="sc">'3'</span><span class="p">,</span><span class="w"> </span><span class="sc">'A'</span><span class="p">},</span>
-<span class="w">  </span><span class="p">{</span><span class="sc">'4'</span><span class="p">,</span><span class="w"> </span><span class="sc">'5'</span><span class="p">,</span><span class="w"> </span><span class="sc">'6'</span><span class="p">,</span><span class="w"> </span><span class="sc">'B'</span><span class="p">},</span>
-<span class="w">  </span><span class="p">{</span><span class="sc">'7'</span><span class="p">,</span><span class="w"> </span><span class="sc">'8'</span><span class="p">,</span><span class="w"> </span><span class="sc">'9'</span><span class="p">,</span><span class="w"> </span><span class="sc">'C'</span><span class="p">},</span>
-<span class="w">  </span><span class="p">{</span><span class="sc">'*'</span><span class="p">,</span><span class="w"> </span><span class="sc">'0'</span><span class="p">,</span><span class="w"> </span><span class="sc">'#'</span><span class="p">,</span><span class="w"> </span><span class="sc">'D'</span><span class="p">}</span>
-<span class="p">};</span>
-
-<span class="kr">byte</span><span class="w"> </span><span class="n">rowPins</span><span class="p">[</span><span class="n">ROWS</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">9</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">};</span><span class="w"> </span>
-<span class="kr">byte</span><span class="w"> </span><span class="n">colPins</span><span class="p">[</span><span class="n">COLS</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">};</span><span class="w"> </span><span class="c1">// for 3x4 remove ", 2"</span>
-
-<span class="n">Keypad</span><span class="w"> </span><span class="n">customKeypad</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Keypad</span><span class="p">(</span><span class="n">makeKeymap</span><span class="p">(</span><span class="n">hexaKeys</span><span class="p">),</span><span class="w"> </span><span class="n">rowPins</span><span class="p">,</span><span class="w"> </span><span class="n">colPins</span><span class="p">,</span><span class="w"> </span><span class="n">ROWS</span><span class="p">,</span><span class="w"> </span><span class="n">COLS</span><span class="p">);</span>
-
-<span class="n">Adafruit_PWMServoDriver</span><span class="w"> </span><span class="n">driver</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Adafruit_PWMServoDriver</span><span class="p">(</span><span class="mh">0x40</span><span class="p">);</span>
-<span class="n">Adafruit_PWMServoDriver</span><span class="w"> </span><span class="n">driverTwo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Adafruit_PWMServoDriver</span><span class="p">(</span><span class="mh">0x41</span><span class="p">);</span>
-
-
-<span class="cp">#define NUM_SERVOS 23</span>
-<span class="cp">#define SERVO_MIN 100               </span><span class="c1">// SERVO_MIN and SERVO_MAX are based on pulse widths for positioning, other unit information is not generally provided. MIN = 100, MAX = 600 for my servos and values provided by spec sheet.</span>
-<span class="cp">#define SERVO_MAX 600               </span><span class="c1">// signial to put them on the otherside but is currently unused</span>
-<span class="cp">#define SERVO_MID 350               </span><span class="c1">// THIS IS DONE BY Max-Min MAY want to update it</span>
-<span class="cp">#define SERVO_DELAY 1000 </span><span class="c1">// delay in milliseconds</span>
-
-<span class="kr">const</span><span class="w"> </span><span class="kr">int</span><span class="w"> </span><span class="n">SERVO_DRIVER_CAP</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16</span><span class="p">;</span>
-<span class="kr">int</span><span class="w"> </span><span class="n">hourTen</span><span class="p">;</span>
-<span class="kr">int</span><span class="w"> </span><span class="n">hourOne</span><span class="p">;</span>
-<span class="kr">int</span><span class="w"> </span><span class="n">minuteOne</span><span class="p">;</span>
-<span class="kr">int</span><span class="w"> </span><span class="n">minuteTen</span><span class="p">;</span>
-<span class="kr">unsigned</span><span class="w"> </span><span class="kr">long</span><span class="w"> </span><span class="n">prevMilli</span><span class="p">;</span><span class="w"> </span><span class="c1">// useful for setting up clock while other items are still processing or delays are running</span>
-<span class="kr">unsigned</span><span class="w"> </span><span class="kr">long</span><span class="w"> </span><span class="n">currMilli</span><span class="p">;</span>
-<span class="kr">unsigned</span><span class="w"> </span><span class="kr">long</span><span class="w"> </span><span class="n">duration</span><span class="p">;</span>
-<span class="kr">unsigned</span><span class="w"> </span><span class="kr">long</span><span class="w"> </span><span class="n">minuteTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">60000</span><span class="p">;</span><span class="w">  </span><span class="c1">// 60000ms in a minute used for consistent time changes</span>
-
-
-<span class="kr">bool</span><span class="w"> </span><span class="n">minute</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kr">false</span><span class="p">;</span>
-
-
-<span class="kr">void</span><span class="w"> </span><span class="nb">setup</span><span class="p">(){</span>
-<span class="w">  </span><span class="nf">Serial</span><span class="p">.</span><span class="nf">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span>
-<span class="nf">Serial</span><span class="p">.</span><span class="nf">println</span><span class="p">(</span><span class="s">"started"</span><span class="p">);</span>
-<span class="w">  </span><span class="n">prevMilli</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">millis</span><span class="p">();</span>
-<span class="w">  </span><span class="n">driver</span><span class="p">.</span><span class="nf">begin</span><span class="p">();</span>
-<span class="w">  </span><span class="n">driver</span><span class="p">.</span><span class="n">setPWMFreq</span><span class="p">(</span><span class="mi">50</span><span class="p">);</span>
-<span class="w">  </span><span class="nf">delay</span><span class="p">(</span><span class="mi">50</span><span class="p">);</span>
-<span class="nf">Serial</span><span class="p">.</span><span class="nf">println</span><span class="p">(</span><span class="s">"Driver initialized"</span><span class="p">);</span>
-<span class="w">  </span><span class="c1">// Initialzie all servos to their min position durving setup</span>
-<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kr">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">NUM_SERVOS</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
-
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">SERVO_DRIVER_CAP</span><span class="p">){</span>
-
-<span class="w">    </span><span class="n">driver</span><span class="p">.</span><span class="n">setPWM</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">SERVO_MIN</span><span class="p">);</span>
-
-<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-
-<span class="w">      </span><span class="n">driverTwo</span><span class="p">.</span><span class="n">setPWM</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">SERVO_MIN</span><span class="p">);</span>
-
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">  </span><span class="p">}</span>
-
-<span class="w">  </span><span class="n">hourTen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="c1">// I desire to initalize to 1:00</span>
-<span class="w">  </span><span class="n">hourOne</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="w">  </span><span class="n">minuteOne</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="w">  </span><span class="n">minuteTen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-
-<span class="w">  </span><span class="c1">// initialize the first position to 1:00</span>
-<span class="w">  </span><span class="c1">// as we are currently only working with 1 digit we will do the first 0 first.</span>
-<span class="nf">Serial</span><span class="p">.</span><span class="nf">println</span><span class="p">(</span><span class="s">"Starting clock"</span><span class="p">);</span>
-<span class="w"> </span><span class="n">setClock</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
-<span class="w"> </span><span class="nf">delay</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
-
-<span class="p">}</span>
-
-<span class="kr">void</span><span class="w"> </span><span class="nb">loop</span><span class="p">(){</span>
-
-<span class="w">  </span><span class="n">currMilli</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">millis</span><span class="p">();</span>
+</code></pre></div>
+<p>Section regarding minute tracking and likely where the clock drift bug takes place.</p>
+<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="n">currMilli</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">millis</span><span class="p">();</span>
 <span class="w">  </span><span class="n">duration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">currMilli</span><span class="o">-</span><span class="n">prevMilli</span><span class="p">;</span><span class="w"> </span><span class="c1">// systematically identify how long things have been running for TESTING</span>
 <span class="w">  </span><span class="nf">Serial</span><span class="p">.</span><span class="nf">println</span><span class="p">(</span><span class="n">duration</span><span class="p">);</span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">duration</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">minuteTime</span><span class="p">){</span><span class="w"> </span><span class="c1">// so that's every minute... what about when it flips on day 49.7?                                                     //REAL TIME ERROR  we crash at 60000 ms ... WHY?</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">duration</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">minuteTime</span><span class="p">){</span><span class="w"> </span>
 
 <span class="w">    </span><span class="c1">// Ok research says that since they are unsigned longs this one line should TECHNICALLY handle the overflow</span>
 <span class="nf">Serial</span><span class="p">.</span><span class="nf">println</span><span class="p">(</span><span class="s">"We made it into the loop and you didn't mess up the math"</span><span class="p">);</span>
@@ -897,99 +910,9 @@
 <span class="w">  </span><span class="p">}</span>
 
 <span class="w">  </span><span class="nf">delay</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
-
-<span class="p">}</span>
-
-<span class="kr">void</span><span class="w"> </span><span class="nf">inputKeypad</span><span class="p">(){</span>
-
-<span class="w">  </span><span class="kr">String</span><span class="w"> </span><span class="n">futureTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">""</span><span class="p">;</span>
-<span class="w">  </span><span class="kr">char</span><span class="w"> </span><span class="n">lastKeyPress</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">NO_KEY</span><span class="p">;</span>
-<span class="w">  </span><span class="kr">int</span><span class="w"> </span><span class="n">desiredTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-
-<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">((</span><span class="n">lastKeyPress</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="sc">'*'</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">(</span><span class="n">lastKeyPress</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="sc">'#'</span><span class="p">)){</span><span class="w"> </span><span class="c1">// while character inputed is not # or *  we can continue getting values;</span>
-
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">lastKeyPress</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">NO_KEY</span><span class="p">){</span><span class="c1">// check if its a letter, if not then add it to future time</span>
-
-<span class="w">      </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">lastKeyPress</span><span class="p">){</span>
-
-<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="sc">'A'</span><span class="p">:</span>
-<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="sc">'B'</span><span class="p">:</span>
-<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="sc">'C'</span><span class="p">:</span>
-<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="sc">'D'</span><span class="p">:</span><span class="w"> </span><span class="c1">// 'A' 'B' 'C' and 'D' all end up doing the same thing resetting it NO_KEY and searching for a new input</span>
-<span class="w">          </span><span class="n">lastKeyPress</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">NO_KEY</span><span class="p">;</span>
-<span class="w">          </span><span class="k">break</span><span class="p">;</span>
-
-<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="sc">'*'</span><span class="p">:</span>
-<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="sc">'#'</span><span class="p">:</span><span class="w"> </span><span class="c1">// with * and # in case they somehow aren't picked up we want the system to recongnize it so we'll give a second chance</span>
-<span class="w">          </span><span class="k">break</span><span class="p">;</span>
-
-<span class="w">        </span><span class="k">default</span><span class="o">:</span><span class="w"> </span><span class="c1">// default is for 0-9 and will need input from hours first in tens then ones, then go minutes in tens then ones</span>
-<span class="w">          </span><span class="n">futureTime</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">lastKeyPress</span><span class="p">;</span>
-<span class="w">          </span><span class="n">lastKeyPress</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">NO_KEY</span><span class="p">;</span>
-
-<span class="w">      </span><span class="cm">/* //alternative case's for legibility</span>
-
-<span class="cm">        case 'A': // ignore current input and get new</span>
-
-<span class="cm">          lastKeyPress = NO_KEY</span>
-<span class="cm">          break;</span>
-
-<span class="cm">        case 'B': // ignore current input and get new</span>
-
-<span class="cm">          lastKeyPress = NO_KEY</span>
-<span class="cm">          break;</span>
-
-<span class="cm">        case 'C': // still not a valid input so we ignore it</span>
-
-<span class="cm">          lastKeyPress = NO_KEY</span>
-<span class="cm">          break;</span>
-
-<span class="cm">        case 'D': // also not valid</span>
-
-<span class="cm">          lastKeyPress = NO_KEY</span>
-<span class="cm">          break;</span>
-
-<span class="cm">        case '*': // with * and # in case they somehow aren't picked up we want the system to recongnize it so we'll give a second chance</span>
-
-<span class="cm">          break;</span>
-
-<span class="cm">        case '#': // should also be redundant</span>
-
-<span class="cm">          break;</span>
-
-<span class="cm">        default:  // default is for 0-9 and will need input from hours first in tens then ones, then go minutes in tens then ones</span>
-
-<span class="cm">          futureTime+= lastKeyPress;</span>
-<span class="cm">          lastKeyPress = NO_KEY;</span>
-
-<span class="cm">      */</span>
-<span class="w">      </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
-
-
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">futureTime</span><span class="p">.</span><span class="n">length</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">4</span><span class="p">){</span><span class="w"> </span><span class="c1">// only 4 digits are allowed in the clock</span>
-
-<span class="w">      </span><span class="k">break</span><span class="p">;</span><span class="w"> </span><span class="c1">// break out of the while loop chains and go to end commands which relate to sending the number to the clock</span>
-
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">lastKeyPress</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">NO_KEY</span><span class="p">){</span>
-
-<span class="w">      </span><span class="nf">delay</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
-<span class="w">      </span><span class="n">lastKeyPress</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">customKeypad</span><span class="p">.</span><span class="nf">getKey</span><span class="p">();</span>
-
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">  </span><span class="p">}</span>
-
-<span class="w">  </span><span class="n">desiredTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">futureTime</span><span class="p">.</span><span class="n">toInt</span><span class="p">();</span><span class="w"> </span><span class="c1">// convert to an int</span>
-<span class="w">  </span><span class="nf">Serial</span><span class="p">.</span><span class="nf">println</span><span class="p">(</span><span class="n">futureTime</span><span class="p">);</span><span class="w">                                                                                            </span><span class="c1">// FOR TESTING</span>
-<span class="w">  </span><span class="n">setClock</span><span class="p">(</span><span class="n">desiredTime</span><span class="p">);</span>
-
-<span class="p">}</span>
-
-
-<span class="kr">void</span><span class="w"> </span><span class="nf">setClock</span><span class="p">(</span><span class="kr">int</span><span class="w"> </span><span class="n">num</span><span class="p">){</span><span class="w"> </span><span class="c1">// When in combination with switch to set time.</span>
+</code></pre></div>
+<p>Setting the clock to a desired time relies on one outward facing method which calls other specified methods:</p>
+<div class="highlight"><pre><span></span><code><span class="kr">void</span><span class="w"> </span><span class="nf">setClock</span><span class="p">(</span><span class="kr">int</span><span class="w"> </span><span class="n">num</span><span class="p">){</span><span class="w"> </span><span class="c1">// When in combination with switch to set time.</span>
 
 <span class="w">  </span><span class="c1">//first lower all planes before we start worrying about the 3-4 digit number getting passed</span>
 <span class="w">  </span><span class="n">closeSevenSegmentDigit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
@@ -1012,121 +935,9 @@
 <span class="w">  </span><span class="n">prevMilli</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">currMilli</span><span class="p">;</span>
 
 <span class="p">}</span>
-
-<span class="kr">void</span><span class="w"> </span><span class="nf">setHourTen</span><span class="p">(</span><span class="kr">int</span><span class="w"> </span><span class="n">desired</span><span class="p">){</span><span class="w"> </span><span class="c1">// I uh don't know anymore why its a switch case other than unity between methods</span>
-
-<span class="w">  </span><span class="k">switch</span><span class="p">(</span><span class="n">desired</span><span class="p">){</span>
-
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span>
-
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">21</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">22</span><span class="p">);</span>
-<span class="w">      </span><span class="n">hourTen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">desired</span><span class="p">;</span>
-
-<span class="w">  </span><span class="p">}</span>
-
-<span class="p">}</span>
-
-<span class="kr">void</span><span class="w"> </span><span class="nf">setHourOne</span><span class="p">(</span><span class="kr">int</span><span class="w"> </span><span class="n">desired</span><span class="p">){</span><span class="c1">// raises the individual planes one by one to represent each number for the ones place in the hour location</span>
-
-<span class="w">    </span><span class="k">switch</span><span class="p">(</span><span class="n">desired</span><span class="p">){</span>
-
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="mi">0</span><span class="p">:</span>
-
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">14</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">15</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">16</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">18</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">19</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
-<span class="w">      </span><span class="k">break</span><span class="p">;</span>
-
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span>
-
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">16</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">19</span><span class="p">);</span>
-<span class="w">      </span><span class="k">break</span><span class="p">;</span>
-
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="mi">2</span><span class="p">:</span>
-
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">14</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">15</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">17</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">19</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
-<span class="w">      </span><span class="k">break</span><span class="p">;</span>
-
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="mi">3</span><span class="p">:</span>
-
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">14</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">16</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">17</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">19</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
-<span class="w">      </span><span class="k">break</span><span class="p">;</span>
-
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="mi">4</span><span class="p">:</span>
-
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">16</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">17</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">18</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">19</span><span class="p">);</span>
-<span class="w">      </span><span class="k">break</span><span class="p">;</span>
-
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="mi">5</span><span class="p">:</span>
-
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">14</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">16</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">17</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">18</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
-<span class="w">      </span><span class="k">break</span><span class="p">;</span>
-
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="mi">6</span><span class="p">:</span>
-
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">14</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">15</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">16</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">17</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">18</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
-<span class="w">      </span><span class="k">break</span><span class="p">;</span>
-
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="mi">7</span><span class="p">:</span>
-
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">16</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">19</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
-<span class="w">      </span><span class="k">break</span><span class="p">;</span>
-
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="mi">8</span><span class="p">:</span>
-
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">14</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">15</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">16</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">17</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">18</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">19</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
-<span class="w">      </span><span class="k">break</span><span class="p">;</span>
-
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="mi">9</span><span class="p">:</span>
-
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">14</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">16</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">17</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">18</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">19</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
-<span class="w">      </span><span class="k">break</span><span class="p">;</span>
-
-<span class="w">  </span><span class="p">}</span>
-
-<span class="w">  </span><span class="n">hourOne</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">desired</span><span class="p">;</span>
-
-<span class="p">}</span>
-
-<span class="kr">void</span><span class="w"> </span><span class="nf">setMinuteTen</span><span class="p">(</span><span class="kr">int</span><span class="w"> </span><span class="n">desired</span><span class="p">){</span><span class="c1">// raises the individual planes one by one to represent each number for the tens place in the minute location</span>
+</code></pre></div>
+<p>Here's a sample of the setMinuteTen cases for how it'll handle each number at that digit.</p>
+<div class="highlight"><pre><span></span><code><span class="kr">void</span><span class="w"> </span><span class="nf">setMinuteTen</span><span class="p">(</span><span class="kr">int</span><span class="w"> </span><span class="n">desired</span><span class="p">){</span><span class="c1">// raises the individual planes one by one to represent each number for the tens place in the minute location</span>
 
 <span class="w">    </span><span class="k">switch</span><span class="p">(</span><span class="n">desired</span><span class="p">){</span>
 
@@ -1146,532 +957,14 @@
 <span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">12</span><span class="p">);</span>
 <span class="w">      </span><span class="k">break</span><span class="p">;</span>
 
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="mi">2</span><span class="p">:</span>
-
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">7</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">8</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">12</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">13</span><span class="p">);</span>
-<span class="w">      </span><span class="k">break</span><span class="p">;</span>
-
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="mi">3</span><span class="p">:</span>
-
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">7</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">9</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">12</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">13</span><span class="p">);</span>
-<span class="w">      </span><span class="k">break</span><span class="p">;</span>
-
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="mi">4</span><span class="p">:</span>
-
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">9</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">11</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">12</span><span class="p">);</span>
-<span class="w">      </span><span class="k">break</span><span class="p">;</span>
-
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="mi">5</span><span class="p">:</span>
-
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">7</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">9</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">11</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">13</span><span class="p">);</span>
-<span class="w">      </span><span class="k">break</span><span class="p">;</span>
-
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="mi">6</span><span class="p">:</span>
-
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">7</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">8</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">9</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">11</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">13</span><span class="p">);</span>
-<span class="w">      </span><span class="k">break</span><span class="p">;</span>
-
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="mi">7</span><span class="p">:</span>
-
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">9</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">12</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">13</span><span class="p">);</span>
-<span class="w">      </span><span class="k">break</span><span class="p">;</span>
-
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="mi">8</span><span class="p">:</span>
-
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">7</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">8</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">9</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">11</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">12</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">13</span><span class="p">);</span>
-<span class="w">      </span><span class="k">break</span><span class="p">;</span>
-
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="mi">9</span><span class="p">:</span>
-
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">7</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">9</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">11</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">12</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">13</span><span class="p">);</span>
-<span class="w">      </span><span class="k">break</span><span class="p">;</span>
 <span class="w">  </span><span class="p">}</span>
 
 <span class="w">  </span><span class="n">minuteTen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">desired</span><span class="p">;</span><span class="w"> </span>
 
 <span class="p">}</span>
-
-<span class="kr">void</span><span class="w"> </span><span class="nf">setMinuteOne</span><span class="p">(</span><span class="kr">int</span><span class="w"> </span><span class="n">desired</span><span class="p">){</span><span class="c1">// raises the individual planes one by one to represent each number for the ones place in the minute location</span>
-
-<span class="w">  </span><span class="k">switch</span><span class="p">(</span><span class="n">desired</span><span class="p">){</span>
-
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="mi">0</span><span class="p">:</span>
-
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">6</span><span class="p">);</span>
-<span class="w">      </span><span class="k">break</span><span class="p">;</span>
-
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span>
-
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
-<span class="w">      </span><span class="k">break</span><span class="p">;</span>
-
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="mi">2</span><span class="p">:</span>
-
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">6</span><span class="p">);</span>
-<span class="w">      </span><span class="k">break</span><span class="p">;</span>
-
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="mi">3</span><span class="p">:</span>
-
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">6</span><span class="p">);</span>
-<span class="w">      </span><span class="k">break</span><span class="p">;</span>
-
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="mi">4</span><span class="p">:</span>
-
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
-<span class="w">      </span><span class="k">break</span><span class="p">;</span>
-
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="mi">5</span><span class="p">:</span>
-
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">6</span><span class="p">);</span>
-<span class="w">      </span><span class="k">break</span><span class="p">;</span>
-
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="mi">6</span><span class="p">:</span>
-
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">6</span><span class="p">);</span>
-<span class="w">      </span><span class="k">break</span><span class="p">;</span>
-
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="mi">7</span><span class="p">:</span>
-
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">6</span><span class="p">);</span>
-<span class="w">      </span><span class="k">break</span><span class="p">;</span>
-
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="mi">8</span><span class="p">:</span>
-
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">6</span><span class="p">);</span>
-<span class="w">      </span><span class="k">break</span><span class="p">;</span>
-
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="mi">9</span><span class="p">:</span>
-
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">6</span><span class="p">);</span>
-<span class="w">      </span><span class="k">break</span><span class="p">;</span>
-<span class="w">  </span><span class="p">}</span>
-
-<span class="w">  </span><span class="n">minuteOne</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">desired</span><span class="p">;</span>
-
-<span class="p">}</span>
-
-<span class="kr">void</span><span class="w"> </span><span class="nf">closeSevenSegmentDigit</span><span class="p">(</span><span class="kr">int</span><span class="w"> </span><span class="n">startNum</span><span class="p">){</span><span class="w"> </span><span class="c1">// Puts all of the segments in that area down. Only works on minutes and the ones position for the hours</span>
-
-<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kr">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">startNum</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">&lt;</span><span class="p">(</span><span class="n">startNum</span><span class="o">+</span><span class="mi">7</span><span class="p">);</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
-
-<span class="w">    </span><span class="n">moveNumDown</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
-
-<span class="w">  </span><span class="p">}</span>
-
-<span class="w">  </span><span class="nf">delay</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
-
-<span class="p">}</span>
-
-<span class="kr">void</span><span class="w"> </span><span class="nf">closeTwoSegmentDigit</span><span class="p">(</span><span class="kr">int</span><span class="w"> </span><span class="n">startNum</span><span class="p">){</span><span class="w"> </span><span class="c1">// lowers both segments of the hour section and potientially any other's that you want to lower 2 sections on</span>
-
-<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kr">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">startNum</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">&lt;</span><span class="p">(</span><span class="n">startNum</span><span class="o">+</span><span class="mi">2</span><span class="p">);</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
-
-<span class="w">    </span><span class="n">moveNumDown</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
-
-<span class="w">  </span><span class="p">}</span>
-
-<span class="w">  </span><span class="nf">delay</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
-
-<span class="p">}</span>
-
-<span class="kr">void</span><span class="w"> </span><span class="nf">changeTime</span><span class="p">(){</span><span class="w"> </span><span class="c1">// assumptions = increase hour will tell if we need to increase the tens place as well and if we need to reset it to 1. Increase Minute will handle both 10s and 1s</span>
-
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">minuteOne</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">9</span><span class="p">){</span>
-
-<span class="w">    </span><span class="n">incMinuteOne</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="w"> </span><span class="c1">// set's 1's place to 0</span>
-
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">minuteTen</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">5</span><span class="p">){</span><span class="w"> </span><span class="c1">// logic for incrementing 10's place</span>
-
-<span class="w">      </span><span class="n">increaseHour</span><span class="p">();</span>
-<span class="w">      </span><span class="n">incMinuteTen</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
-
-<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-
-<span class="w">    </span><span class="n">incMinuteTen</span><span class="p">(</span><span class="n">minuteTen</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>
-
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-
-<span class="w">    </span><span class="n">incMinuteOne</span><span class="p">(</span><span class="n">minuteOne</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
-
-<span class="w">  </span><span class="p">}</span>
-
-<span class="w">  </span><span class="n">prevMilli</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">currMilli</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="p">(</span><span class="n">currMilli</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">minuteTime</span><span class="p">);</span><span class="w"> </span><span class="c1">// this updates the minute changes without losing seconds</span>
-<span class="w">  </span><span class="nf">Serial</span><span class="p">.</span><span class="nf">println</span><span class="p">(</span><span class="n">prevMilli</span><span class="p">);</span>
-<span class="w">  </span><span class="nf">Serial</span><span class="p">.</span><span class="nf">print</span><span class="p">(</span><span class="s">"Minute One: "</span><span class="p">);</span>
-<span class="w">  </span><span class="nf">Serial</span><span class="p">.</span><span class="nf">println</span><span class="p">(</span><span class="n">minuteOne</span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="kr">void</span><span class="w"> </span><span class="nf">increaseHour</span><span class="p">(){</span>
-
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">hourTen</span><span class="o">==</span><span class="mi">1</span><span class="p">){</span><span class="w"> </span><span class="c1">// edge case of 12:59 increment</span>
-
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">hourOne</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">2</span><span class="p">){</span>
-
-<span class="w">      </span><span class="n">incHourTen</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
-<span class="w">      </span><span class="n">incHourOne</span><span class="p">(</span><span class="mi">12</span><span class="p">);</span><span class="w"> </span><span class="c1">// specialized edge case</span>
-
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">hourOne</span><span class="w"> </span><span class="o">==</span><span class="mi">9</span><span class="p">){</span><span class="w"> </span><span class="c1">//go to 10:00 </span>
-
-<span class="w">    </span><span class="n">incHourTen</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
-<span class="w">    </span><span class="n">incHourOne</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
-
-<span class="w">  </span><span class="p">}</span><span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-
-<span class="w">    </span><span class="n">incHourOne</span><span class="p">(</span><span class="n">hourOne</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"> </span><span class="c1">// standard increment</span>
-
-<span class="w">  </span><span class="p">}</span>
-
-<span class="p">}</span>
-
-
-<span class="kr">void</span><span class="w"> </span><span class="nf">incHourTen</span><span class="p">(</span><span class="kr">int</span><span class="w"> </span><span class="n">desired</span><span class="p">){</span><span class="w"> </span>
-
-<span class="w">  </span><span class="k">switch</span><span class="p">(</span><span class="n">desired</span><span class="p">){</span>
-
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span>
-
-<span class="w">      </span><span class="c1">//switch from 0 to 1</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">21</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">22</span><span class="p">);</span>
-<span class="w">      </span><span class="k">break</span><span class="p">;</span>
-
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="mi">0</span><span class="p">:</span>
-
-<span class="w">      </span><span class="c1">//switch from 1 to 0</span>
-<span class="w">      </span><span class="n">moveNumDown</span><span class="p">(</span><span class="mi">21</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumDown</span><span class="p">(</span><span class="mi">22</span><span class="p">);</span>
-<span class="w">      </span><span class="k">break</span><span class="p">;</span>
-
-<span class="w">  </span><span class="p">}</span>
-
-<span class="w">  </span><span class="n">hourTen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">desired</span><span class="p">;</span>
-
-<span class="p">}</span>
-
-<span class="kr">void</span><span class="w"> </span><span class="nf">incHourOne</span><span class="p">(</span><span class="kr">int</span><span class="w"> </span><span class="n">desired</span><span class="p">){</span><span class="w"> </span><span class="c1">// this one is needed to go from 12 back to 01</span>
-
-<span class="w">  </span><span class="k">switch</span><span class="p">(</span><span class="n">desired</span><span class="p">){</span>
-
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="mi">0</span><span class="p">:</span><span class="w"> </span><span class="c1">// 9 to 0</span>
-
-<span class="w">      </span><span class="n">moveNumDown</span><span class="p">(</span><span class="mi">17</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">15</span><span class="p">);</span>
-<span class="w">      </span><span class="n">incHourTen</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
-<span class="w">      </span><span class="k">break</span><span class="p">;</span>
-
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="w"> </span><span class="c1">// 0 to 1</span>
-
-<span class="w">      </span><span class="n">moveNumDown</span><span class="p">(</span><span class="mi">14</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumDown</span><span class="p">(</span><span class="mi">15</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumDown</span><span class="p">(</span><span class="mi">17</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumDown</span><span class="p">(</span><span class="mi">18</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumDown</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
-<span class="w">      </span><span class="k">break</span><span class="p">;</span>
-
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="mi">2</span><span class="p">:</span><span class="w"> </span><span class="c1">// 1 to 2</span>
-
-<span class="w">      </span><span class="n">moveNumDown</span><span class="p">(</span><span class="mi">16</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">14</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">15</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">17</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
-<span class="w">      </span><span class="k">break</span><span class="p">;</span>
-
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="mi">3</span><span class="p">:</span><span class="w"> </span><span class="c1">// 2 to 3</span>
-
-<span class="w">      </span><span class="n">moveNumDown</span><span class="p">(</span><span class="mi">15</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">16</span><span class="p">);</span>
-<span class="w">      </span><span class="k">break</span><span class="p">;</span>
-
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="mi">4</span><span class="p">:</span><span class="w"> </span><span class="c1">// 3 to 4</span>
-
-<span class="w">      </span><span class="n">moveNumDown</span><span class="p">(</span><span class="mi">14</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumDown</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">18</span><span class="p">);</span>
-<span class="w">      </span><span class="k">break</span><span class="p">;</span>
-
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="mi">5</span><span class="p">:</span><span class="w">  </span><span class="c1">// 4 to 5</span>
-
-<span class="w">      </span><span class="n">moveNumDown</span><span class="p">(</span><span class="mi">19</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">14</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">17</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">18</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
-<span class="w">      </span><span class="k">break</span><span class="p">;</span>
-
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="mi">6</span><span class="p">:</span><span class="w">  </span><span class="c1">// 5 to 6</span>
-
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">15</span><span class="p">);</span>
-<span class="w">      </span><span class="k">break</span><span class="p">;</span>
-
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="mi">7</span><span class="p">:</span><span class="w">  </span><span class="c1">// 6 to 7</span>
-
-<span class="w">      </span><span class="n">moveNumDown</span><span class="p">(</span><span class="mi">14</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumDown</span><span class="p">(</span><span class="mi">15</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumDown</span><span class="p">(</span><span class="mi">17</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumDown</span><span class="p">(</span><span class="mi">18</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">19</span><span class="p">);</span>
-<span class="w">      </span><span class="k">break</span><span class="p">;</span>
-
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="mi">8</span><span class="p">:</span><span class="w"> </span><span class="c1">// 7 to 8</span>
-
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">14</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">15</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">17</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">18</span><span class="p">);</span>
-<span class="w">      </span><span class="k">break</span><span class="p">;</span>
-
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="mi">9</span><span class="p">:</span><span class="w"> </span><span class="c1">// 8 to 9</span>
-
-<span class="w">      </span><span class="n">moveNumDown</span><span class="p">(</span><span class="mi">15</span><span class="p">);</span>
-<span class="w">      </span><span class="k">break</span><span class="p">;</span>
-
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="mi">12</span><span class="p">:</span><span class="w"> </span><span class="c1">// 2 to 1 for 12 to 01 edge case</span>
-
-<span class="w">      </span><span class="n">moveNumDown</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumDown</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumDown</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumDown</span><span class="p">(</span><span class="mi">6</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-<span class="w">      </span><span class="k">break</span><span class="p">;</span>
-
-<span class="w">  </span><span class="p">}</span>
-
-<span class="w">  </span><span class="n">hourOne</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">desired</span><span class="p">;</span>
-
-<span class="p">}</span>
-
-<span class="kr">void</span><span class="w"> </span><span class="nf">incMinuteTen</span><span class="p">(</span><span class="kr">int</span><span class="w"> </span><span class="n">desired</span><span class="p">){</span>
-
-<span class="w">  </span><span class="k">switch</span><span class="p">(</span><span class="n">desired</span><span class="p">){</span>
-
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="w"> </span><span class="c1">// 0 to 1</span>
-
-<span class="w">      </span><span class="n">moveNumDown</span><span class="p">(</span><span class="mi">7</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumDown</span><span class="p">(</span><span class="mi">8</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumDown</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumDown</span><span class="p">(</span><span class="mi">11</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumDown</span><span class="p">(</span><span class="mi">13</span><span class="p">);</span>
-<span class="w">      </span><span class="k">break</span><span class="p">;</span>
-
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="mi">2</span><span class="p">:</span><span class="w"> </span><span class="c1">// 1 to 2</span>
-
-<span class="w">      </span><span class="n">moveNumDown</span><span class="p">(</span><span class="mi">9</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">7</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">8</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">13</span><span class="p">);</span>
-<span class="w">      </span><span class="k">break</span><span class="p">;</span>
-
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="mi">3</span><span class="p">:</span><span class="w"> </span><span class="c1">// 2 to 3</span>
-
-<span class="w">      </span><span class="n">moveNumDown</span><span class="p">(</span><span class="mi">8</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">9</span><span class="p">);</span>
-<span class="w">      </span><span class="k">break</span><span class="p">;</span>
-
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="mi">4</span><span class="p">:</span><span class="w"> </span><span class="c1">// 3 to 4</span>
-
-<span class="w">      </span><span class="n">moveNumDown</span><span class="p">(</span><span class="mi">7</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumDown</span><span class="p">(</span><span class="mi">13</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">11</span><span class="p">);</span>
-<span class="w">      </span><span class="k">break</span><span class="p">;</span>
-
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="mi">5</span><span class="p">:</span><span class="w"> </span><span class="c1">// 4 to 5</span>
-
-<span class="w">      </span><span class="n">moveNumDown</span><span class="p">(</span><span class="mi">12</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">7</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">13</span><span class="p">);</span>
-<span class="w">      </span><span class="k">break</span><span class="p">;</span>
-
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="mi">0</span><span class="p">:</span><span class="w"> </span><span class="c1">// 5 to 0</span>
-
-<span class="w">      </span><span class="n">moveNumDown</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">8</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">12</span><span class="p">);</span>
-<span class="w">      </span><span class="k">break</span><span class="p">;</span>
-
-<span class="w">  </span><span class="p">}</span>
-
-<span class="w">  </span><span class="n">minuteTen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">desired</span><span class="p">;</span>
-
-<span class="p">}</span>
-
-<span class="kr">void</span><span class="w"> </span><span class="nf">incMinuteOne</span><span class="p">(</span><span class="kr">int</span><span class="w"> </span><span class="n">desired</span><span class="p">){</span>
-
-<span class="w">  </span><span class="k">switch</span><span class="p">(</span><span class="n">desired</span><span class="p">){</span><span class="w">                                                                                            </span><span class="c1">//WORRY about Case 1?????</span>
-
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span>
-
-<span class="w">      </span><span class="c1">// change 0 to 1</span>
-<span class="w">      </span><span class="n">moveNumDown</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumDown</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumDown</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumDown</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumDown</span><span class="p">(</span><span class="mi">6</span><span class="p">);</span>
-<span class="w">      </span><span class="k">break</span><span class="p">;</span>
-
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="mi">2</span><span class="p">:</span>
-
-<span class="w">      </span><span class="c1">//change 1 to 2 </span>
-<span class="w">      </span><span class="n">moveNumDown</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">6</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
-<span class="w">      </span><span class="k">break</span><span class="p">;</span>
-
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="mi">3</span><span class="p">:</span>
-
-<span class="w">      </span><span class="c1">// change 2 to 3</span>
-<span class="w">      </span><span class="n">moveNumDown</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-<span class="w">      </span><span class="k">break</span><span class="p">;</span>
-
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="mi">4</span><span class="p">:</span>
-
-<span class="w">      </span><span class="c1">//change 3 to 4</span>
-<span class="w">      </span><span class="n">moveNumDown</span><span class="p">(</span><span class="mi">6</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumDown</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span>
-<span class="w">      </span><span class="k">break</span><span class="p">;</span>
-
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="mi">5</span><span class="p">:</span>
-
-<span class="w">      </span><span class="c1">//change 4 to 5</span>
-<span class="w">      </span><span class="n">moveNumDown</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">6</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
-<span class="w">      </span><span class="k">break</span><span class="p">;</span>
-
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="mi">6</span><span class="p">:</span>
-
-<span class="w">      </span><span class="c1">// change 5 to 6</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
-<span class="w">      </span><span class="k">break</span><span class="p">;</span>
-
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="mi">7</span><span class="p">:</span>
-
-<span class="w">      </span><span class="c1">// change 6 to 7</span>
-<span class="w">      </span><span class="n">moveNumDown</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumDown</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumDown</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumDown</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
-<span class="w">      </span><span class="k">break</span><span class="p">;</span>
-
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="mi">8</span><span class="p">:</span>
-
-<span class="w">      </span><span class="c1">// change 7 to 8</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
-<span class="w">      </span><span class="k">break</span><span class="p">;</span>
-
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="mi">9</span><span class="p">:</span>
-
-<span class="w">      </span><span class="c1">// change 8 to 9</span>
-<span class="w">      </span><span class="n">moveNumDown</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumDown</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
-<span class="w">      </span><span class="k">break</span><span class="p">;</span>
-
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="mi">0</span><span class="p">:</span>
-
-<span class="w">      </span><span class="c1">//change 9 to 0</span>
-<span class="w">      </span><span class="n">moveNumDown</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
-<span class="w">      </span><span class="n">moveNumUp</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
-<span class="w">      </span><span class="n">setMinuteTen</span><span class="p">(</span><span class="n">minuteTen</span><span class="o">++</span><span class="p">);</span>
-<span class="w">      </span><span class="k">break</span><span class="p">;</span>
-
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="n">minuteOne</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">desired</span><span class="p">;</span><span class="w"> </span>
-
-<span class="p">}</span>
-
-
-
-<span class="c1">// This section is not to be manipulated past testing. It functions as intended and will safely raise and lower bars</span>
-
-<span class="c1">// Num means its connected to the servo controller</span>
+</code></pre></div>
+<p>Here's one of the helper functions that moves the individual segments.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Num means its connected to the servo controller</span>
 <span class="c1">// Pin means its directly connected to the servo controller. </span>
 <span class="kr">void</span><span class="w"> </span><span class="nf">moveNumUp</span><span class="p">(</span><span class="kr">int</span><span class="w"> </span><span class="n">servoNum</span><span class="p">){</span>
 
@@ -1702,37 +995,8 @@
 <span class="w">  </span><span class="p">}</span>
 
 <span class="p">}</span>
-
-<span class="kr">void</span><span class="w"> </span><span class="nf">moveNumDown</span><span class="p">(</span><span class="kr">int</span><span class="w"> </span><span class="n">servoNum</span><span class="p">){</span>
-
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">servoNum</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">SERVO_DRIVER_CAP</span><span class="p">){</span>
-
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kr">int</span><span class="w"> </span><span class="n">pos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SERVO_MID</span><span class="p">;</span><span class="w"> </span><span class="n">pos</span><span class="o">&gt;=</span><span class="n">SERVO_MIN</span><span class="p">;</span><span class="w"> </span><span class="n">pos</span><span class="o">--</span><span class="p">){</span>
-
-<span class="w">      </span><span class="n">driver</span><span class="p">.</span><span class="n">setPWM</span><span class="p">(</span><span class="n">servoNum</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">pos</span><span class="p">);</span>
-<span class="w">      </span><span class="nf">delay</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
-
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="nf">delay</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
-<span class="w">    </span><span class="n">driver</span><span class="p">.</span><span class="n">setPWM</span><span class="p">(</span><span class="n">servoNum</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">SERVO_MIN</span><span class="p">);</span>
-
-<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kr">int</span><span class="w"> </span><span class="n">pos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SERVO_MID</span><span class="p">;</span><span class="w"> </span><span class="n">pos</span><span class="o">&gt;=</span><span class="n">SERVO_MIN</span><span class="p">;</span><span class="w"> </span><span class="n">pos</span><span class="o">--</span><span class="p">){</span>
-
-<span class="w">      </span><span class="n">driverTwo</span><span class="p">.</span><span class="n">setPWM</span><span class="p">(</span><span class="n">servoNum</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">pos</span><span class="p">);</span>
-<span class="w">      </span><span class="nf">delay</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
-
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="nf">delay</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
-<span class="w">    </span><span class="n">driverTwo</span><span class="p">.</span><span class="n">setPWM</span><span class="p">(</span><span class="n">servoNum</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">SERVO_MIN</span><span class="p">);</span>
-
-<span class="w">  </span><span class="p">}</span>
-
-<span class="p">}</span>
 </code></pre></div>
+<p>The rest of the code is available in <a href="../HexClockV1.ino">this arduino file.</a></p>
 <h3 id="points-of-concern">Points of Concern</h3>
 <ol>
 <li>The clock drifts after a period of operation. This is caused by the length of time it takes to move each digit and can be calculated for or solved by using a clock module instead of running it through the update section.</li>
