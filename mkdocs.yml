@@ -23,7 +23,7 @@ theme:
     - navigation.prune
     - content.action.edit
     - navigation.footer
-#    - navigation.sections
+    - navigation.sections
 #    - navigation.expand
 #    - navigation.instant # doesn't work that well
 
