@@ -47,7 +47,8 @@ draft_docs: |
   
 plugins:
   - search
-  - tags
+  - tags:
+      tags_file: tags.md
   - glightbox # allow resize images, see https://squidfunk.github.io/mkdocs-material/reference/images/
 
 extra_css:
@@ -61,10 +62,3 @@ not_in_nav: |
   static
     
 # copyright: "Copyright &copy; 2025 Team 102"
-
-# extra:
-#  generator: false
-#  social:
-#    - icon: fontawesome/regular/file-code
-#      link: /2025_fall
-#      name: 2023 Site    
