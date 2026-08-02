@@ -22,7 +22,7 @@ theme:
     - navigation.indexes
     - navigation.prune
     - content.action.edit
-    - navigation.footer
+ #   - navigation.footer
     - navigation.sections
 #    - navigation.expand
 #    - navigation.instant # doesn't work that well
@@ -47,6 +47,7 @@ draft_docs: |
   
 plugins:
   - search
+  - tags
   - glightbox # allow resize images, see https://squidfunk.github.io/mkdocs-material/reference/images/
 
 extra_css:
