@@ -1,12 +1,14 @@
 ---
 title: Mechanical Clock
 tags:
+- Arduino
 - CAD
 - Communication Protocols
-- Embedded Systems
+- Embedded System
 - Motor control
 - Robotics
-- ROS
+- Real-time Response Programming
+- Wire management
 ---
 
 ## Overview

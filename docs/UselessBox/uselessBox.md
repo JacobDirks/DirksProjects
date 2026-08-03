@@ -6,7 +6,7 @@ tags:
 - Embedded System
 - Low-level Programming
 - Rapid Prototyping
-- Real-time Programming
+- Real-time Response Programming
 ---
 
 ## Overview

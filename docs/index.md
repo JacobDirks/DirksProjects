@@ -16,4 +16,5 @@ Welcome to the project portfolio for Jacob Dirks. Projects will descend in order
 * ["EGR 102 Automatic Boom Leveling"](https://jacobdirks.github.io/DirksProjects/EGR102/egr102/)
 * ["Useless Box"](https://jacobdirks.github.io/DirksProjects/UselessBox/uselessBox/)
 
+One option to view projects across the lifetime of this portfolio is to view the ["Tags page"](https://jacobdirks.github.io/DirksProjects/tags/) which has access to the projects in the archive as well as the main section.
 <!-- Projects to get approval moving forward: -->
